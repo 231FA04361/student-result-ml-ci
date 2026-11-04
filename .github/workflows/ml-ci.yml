@@ -27,16 +27,16 @@ jobs:
           pip install -r requirements.txt
 
       - name: Train ML model
-        run: |
-          python train_model.py
+        run: python train_model.py
 
       - name: Validate model quality
-        run: |
-          python quality_gate.py
+        run: python quality_gate.py
 
       - name: Test ML pipeline
-        run: |
-          python -m unittest discover -v
+        run: python -m unittest test_ml_pipeline.py
+
+      - name: Test Flask API
+        run: python -m unittest test_app.py
 
       - name: Prepare release candidate
         run: |
