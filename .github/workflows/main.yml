@@ -28,19 +28,15 @@ jobs:
 
       - name: Train ML model
         run: |
-          python train.py
+          python train_model.py
 
       - name: Validate model quality
         run: |
-          python validate_model.py
+          python quality_gate.py
 
       - name: Test ML pipeline
         run: |
-          python -m unittest test_pipeline.py
-
-      - name: Test Flask API
-        run: |
-          python -m unittest test_app.py
+          python -m unittest discover -v
 
       - name: Prepare release candidate
         run: |
