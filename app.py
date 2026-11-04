@@ -1,3 +1,4 @@
+
 from pathlib import Path
 
 import joblib
@@ -25,6 +26,7 @@ def load_model():
     return joblib.load(MODEL_PATH)
 
 
+# Home endpoint
 @app.get("/")
 def health_check():
     return jsonify({
@@ -33,6 +35,15 @@ def health_check():
     })
 
 
+# New health endpoint for Practical-7
+@app.get("/health")
+def health():
+    return jsonify({
+        "status": "healthy"
+    })
+
+
+# Student prediction endpoint
 @app.post("/predict")
 def predict():
     data = request.get_json(silent=True)
